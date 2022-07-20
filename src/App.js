@@ -5,11 +5,7 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
-
-import { HorizontalPage, PageHeader } from "./app/HorizontalPage";
-
-
-
+import { HorizontalPage } from "./app/HorizontalPage";
 import { SinglePostPage } from "./features/posts/SinglePostPage";
 import { EditPostForm } from "./features/posts/EditPostForm";
 

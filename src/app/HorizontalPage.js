@@ -8,12 +8,10 @@ import { Page,
     PageSectionVariants,
     Toolbar,
     ToolbarContent,
-    ToolbarItem,
-    Card,
-    CardBody } from '@patternfly/react-core';
+    ToolbarItem } from '@patternfly/react-core';
 import { Navbar } from "./Navbar";
 import { PostsList } from "../features/posts/PostsList";
-import { AddPostForm } from "../features/posts/AddPostForm";
+import CreatePostForm from "../features/posts/CreatePostForm"
 
 export const PageHeader = () => {
   const headerToolbar = (
@@ -43,7 +41,7 @@ export const HorizontalPage = () => {
       <Page header={<PageHeader />}>
         <PostsList />
         <PageSection variant={PageSectionVariants.dark}></PageSection>
-        <AddPostForm />
+        <CreatePostForm />
       </Page>
     );
   };

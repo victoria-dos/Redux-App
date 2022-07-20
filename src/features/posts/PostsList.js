@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { PostAuthor } from "./PostAuthor";
 import { TimeAgo } from "./TimeAgo";
 import { SectionTitle, SubSectionTitle } from "../../utilities/Titles"
-import { Truncate, Button, Card, CardBody, CardTitle, PageSection, PageSectionVariants } from '@patternfly/react-core';
+import { Card, CardBody, CardTitle, PageSection, PageSectionVariants } from '@patternfly/react-core';
 
 export const PostsList = () => {
   
@@ -14,7 +14,7 @@ export const PostsList = () => {
   return (
     <PageSection variant={PageSectionVariants.light} isWidthLimited isCenterAligned>
       <SectionTitle title="Posts"/>
-      {orderedPosts.map((post) => (
+      {posts ? orderedPosts.map((post) => (
         <div key={post.id} className="pf-u-w-50-on-md">
         <Card isRounded className="pf-u-display-flex pf-u-h-33">
           <CardTitle>
@@ -29,7 +29,12 @@ export const PostsList = () => {
         </Card>
         <br></br>
         </div>
-      ))}
+      ))
+    :
+    <div>
+      <SubSectionTitle title="No posts available" />
+    </div>}
+      
     </PageSection>
   );
 };

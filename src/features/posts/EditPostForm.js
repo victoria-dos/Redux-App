@@ -1,17 +1,14 @@
-import { React, useEffect, useState } from "react";
+import { React, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { postUpdated } from "./postsSlice";
 import { useHistory } from "react-router-dom";
 import { PageHeader } from "../../app/HorizontalPage";
-import { SectionTitle, SubSectionTitle } from "../../utilities/Titles"
+import { SectionTitle } from "../../utilities/Titles"
 import { Button,
   Form,
   FormGroup,
   TextInput,
   TextArea,
-  FormSelect,
-  FormSelectOption,
-  SelectVariant,
   ActionGroup,
   Page,
   PageSection,
