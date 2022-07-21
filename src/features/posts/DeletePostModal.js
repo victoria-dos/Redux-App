@@ -15,7 +15,7 @@ class DeletePostModal extends React.Component {
       }));
     };
     this.handleDeletePost = () => {
-        this.props.postDeleted()
+        this.props.postDeleted(this.props.postIndex)
         this.props.history.push(`/`);
     }
   }

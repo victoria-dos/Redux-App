@@ -24,6 +24,8 @@ export const SinglePostPage = ({ match }) => {
   const post = useSelector((state) =>
     state.posts.find((post) => post.id === postId)
   );
+  const postIndex = useSelector((state) => state.posts).indexOf(post)
+  
   const history = useHistory();
 
   if (!post) {
@@ -64,9 +66,8 @@ export const SinglePostPage = ({ match }) => {
               Edit Post
             </Link>
           </Button>
-          <DeletePostModal history={history}/>
+          <DeletePostModal history={history} postIndex={postIndex}/>
         </CardFooter>
-        
       </Card>
     </PageSection>
     </Page>
