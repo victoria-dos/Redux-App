@@ -1,10 +1,9 @@
-import { React, useState } from "react";
+import { React } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { postAdded } from "./postsSlice";
 import { SectionTitle } from "../../utilities/Titles"
 import FormRenderer from '@data-driven-forms/react-form-renderer/form-renderer';
 import componentTypes from '@data-driven-forms/react-form-renderer/component-types';
-import FormTemplate from '@data-driven-forms/pf4-component-mapper/form-template';
 import TextField from '@data-driven-forms/pf4-component-mapper/text-field';
 import Select from '@data-driven-forms/pf4-component-mapper/select';
 import Textarea from '@data-driven-forms/pf4-component-mapper/textarea';
@@ -12,8 +11,8 @@ import {
   PageSection,
   PageSectionVariants }
 from '@patternfly/react-core';
-import newPostSchema from "./newPostSchema";
-
+import createAddPostSchema from "./createAddPostSchema";
+import { FormTemplateCanReset } from "../../utilities/templates";
 
 const componentMapper = {
   [componentTypes.TEXT_FIELD]: TextField,
@@ -21,26 +20,12 @@ const componentMapper = {
   [componentTypes.TEXTAREA]: Textarea,
 };
 
-const FormTemplateCanReset = (props) => <FormTemplate {...props} canReset />;
-
-const CreatePostForm = () => {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-  const [userId, setUserId] = useState("");
-
-  // const handleTitleChange = (title) => setTitle(title)
-  // const handleContentChange = (content) => setContent(content)
-  // const handleUserIdChange = (userId) => setUserId(userId)
-
-  const dispatch = useDispatch();
+const AddPost = () => {
   const users = useSelector((state) => state.users);
-
-  const onSavePostClick = () => {
+  const dispatch = useDispatch();
+  const onSubmit = ({title, content, userId}) => {
     dispatch(postAdded(title, content, userId));
-    setTitle("");
-    setContent("");
   };
-
 
   return (
     <PageSection variant={PageSectionVariants.light} isWidthLimited isCenterAligned>
@@ -48,12 +33,11 @@ const CreatePostForm = () => {
       <FormRenderer
       componentMapper={componentMapper}
       FormTemplate={FormTemplateCanReset}
-      schema={newPostSchema({users})}
-      onSubmit={onSavePostClick}
+      schema={createAddPostSchema(users)}
+      onSubmit={onSubmit}
     />
-    </PageSection>
-    
+    </PageSection>   
   )
 }
 
-export default CreatePostForm;
+export default AddPost;

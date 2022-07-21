@@ -1,10 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
 import { postDeleted } from "./postsSlice";
 import { Modal, ModalVariant, Button } from '@patternfly/react-core';
-
-
 
 class DeletePostModal extends React.Component {
   constructor(props) {

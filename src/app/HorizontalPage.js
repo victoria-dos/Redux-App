@@ -11,7 +11,7 @@ import { Page,
     ToolbarItem } from '@patternfly/react-core';
 import { Navbar } from "./Navbar";
 import { PostsList } from "../features/posts/PostsList";
-import CreatePostForm from "../features/posts/CreatePostForm"
+import AddPost from "../features/posts/AddPost"
 
 export const PageHeader = () => {
   const headerToolbar = (
@@ -41,7 +41,7 @@ export const HorizontalPage = () => {
       <Page header={<PageHeader />}>
         <PostsList />
         <PageSection variant={PageSectionVariants.dark}></PageSection>
-        <CreatePostForm />
+        <AddPost />
       </Page>
     );
   };
