@@ -9,6 +9,7 @@ class DeletePostModal extends React.Component {
     this.state = {
       isModalOpen: false
     };
+    
     this.handleModalToggle = () => {
       this.setState(({ isModalOpen }) => ({
         isModalOpen: !isModalOpen
@@ -35,7 +36,7 @@ class DeletePostModal extends React.Component {
           onClose={this.handleModalToggle}
           actions={[
             <Button key="confirm" variant="danger" onClick={this.handleDeletePost}>
-              Confirm
+              Delete
             </Button>,
             <Button key="cancel" variant="link" onClick={this.handleModalToggle}>
               Cancel
@@ -49,9 +50,9 @@ class DeletePostModal extends React.Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, props) => {
     return {
-        postDeleted: () => dispatch(postDeleted())
+        postDeleted: () => dispatch(postDeleted(props.postIndex))
     }
 };
 export default connect(null, mapDispatchToProps)(DeletePostModal)
