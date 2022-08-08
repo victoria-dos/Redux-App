@@ -1,8 +1,7 @@
 import { React } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { PostAuthor } from "./PostAuthor";
-import { postDeleted } from "./postsSlice";
 import DeletePostModal from "./DeletePostModal";
 import { useHistory } from "react-router-dom";
 import { SectionTitle, SubSectionTitle } from "../../utilities/Titles"
@@ -25,9 +24,8 @@ export const SinglePostPage = ({ match }) => {
   const post = useSelector((state) =>
     state.posts.find((post) => post.id === postId)
   );
-
-  const dispatch = useDispatch()
-  const posts = useSelector((state) => state.posts)
+  const postIndex = useSelector((state) => state.posts).indexOf(post)
+  
   const history = useHistory();
 
   if (!post) {
@@ -44,14 +42,6 @@ export const SinglePostPage = ({ match }) => {
     textDecoration: 'none',
     color: 'white',
   }
-
-  const onDeletePostClick = (e) => {
-    const index = posts.findIndex(
-      (post) => e.target.getAttribute("id") === post.id
-    );
-    dispatch(postDeleted(index));
-    history.push(`/`);
-  };
 
   const ParseText = ({ post }) => {
     return post.content.split('\n').map((chunk) => <Text key={post.id} component={TextVariants.p} className="pf-u-my-m">{chunk}</Text>)
@@ -76,9 +66,8 @@ export const SinglePostPage = ({ match }) => {
               Edit Post
             </Link>
           </Button>
-          <DeletePostModal history={history}/>
+          <DeletePostModal history={history} postIndex={postIndex}/>
         </CardFooter>
-        
       </Card>
     </PageSection>
     </Page>

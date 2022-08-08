@@ -5,13 +5,9 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
-
-import { HorizontalPage, PageHeader } from "./app/HorizontalPage";
-
-
-
+import { HorizontalPage } from "./app/HorizontalPage";
 import { SinglePostPage } from "./features/posts/SinglePostPage";
-import { EditPostForm } from "./features/posts/EditPostForm";
+import { EditPost } from "./features/posts/EditPost";
 
 function App() {
   return (
@@ -28,7 +24,7 @@ function App() {
             )}
           />
           <Route exact path="/posts/:postId" component={SinglePostPage} />
-          <Route exact path="/editPost/:postId" component={EditPostForm} />
+          <Route exact path="/editPost/:postId" component={EditPost} />
           <Redirect to="/" />
         </Switch>
       </div>

@@ -1,10 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
 import { postDeleted } from "./postsSlice";
 import { Modal, ModalVariant, Button } from '@patternfly/react-core';
-
-
 
 class DeletePostModal extends React.Component {
   constructor(props) {
@@ -12,13 +9,14 @@ class DeletePostModal extends React.Component {
     this.state = {
       isModalOpen: false
     };
+    
     this.handleModalToggle = () => {
       this.setState(({ isModalOpen }) => ({
         isModalOpen: !isModalOpen
       }));
     };
     this.handleDeletePost = () => {
-        this.props.postDeleted()
+        this.props.postDeleted(this.props.postIndex)
         this.props.history.push(`/`);
     }
   }
@@ -38,7 +36,7 @@ class DeletePostModal extends React.Component {
           onClose={this.handleModalToggle}
           actions={[
             <Button key="confirm" variant="danger" onClick={this.handleDeletePost}>
-              Confirm
+              Delete
             </Button>,
             <Button key="cancel" variant="link" onClick={this.handleModalToggle}>
               Cancel
@@ -52,9 +50,9 @@ class DeletePostModal extends React.Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, props) => {
     return {
-        postDeleted: () => dispatch(postDeleted())
+        postDeleted: () => dispatch(postDeleted(props.postIndex))
     }
 };
 export default connect(null, mapDispatchToProps)(DeletePostModal)
