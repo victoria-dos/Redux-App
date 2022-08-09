@@ -1,10 +1,11 @@
-import React from "react";
+import { React, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { PostAuthor } from "./PostAuthor";
 import { TimeAgo } from "./TimeAgo";
 import { SectionTitle, SubSectionTitle } from "../../utilities/Titles"
 import { Card, CardBody, CardTitle, PageSection, PageSectionVariants } from '@patternfly/react-core';
+import PaginationBottom from '../../utilities/Pagination'
 
 export const PostsList = () => {
   
@@ -34,6 +35,7 @@ export const PostsList = () => {
     <div>
       <SubSectionTitle title="No posts available" />
     </div>}
+    <PaginationBottom/>
       
     </PageSection>
   );
