@@ -8,6 +8,7 @@ import {
 import { HorizontalPage } from "./app/HorizontalPage";
 import { SinglePostPage } from "./features/posts/SinglePostPage";
 import { EditPost } from "./features/posts/EditPost";
+import { HideShowPasswordPage }  from "./features/users/LoginPage";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           />
           <Route exact path="/posts/:postId" component={SinglePostPage} />
           <Route exact path="/editPost/:postId" component={EditPost} />
+          <Route exact path="/login" component={HideShowPasswordPage} />
           <Redirect to="/" />
         </Switch>
       </div>

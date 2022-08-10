@@ -1,16 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { nanoid } from "@reduxjs/toolkit";
 
 const initialState = [
-  { id: "0", name: "Bella Goth" },
-  { id: "1", name: "Mortimer Goth" },
-  { id: "2", name: "Cassandra Goth" },
-  { id: "3", name: "Alexander Goth" }
+  { id: "bella", name: "Bella Goth", password: "1234"},
+  { id: "mortimer", name: "Mortimer Goth", password: "1234" },
+  { id: "cassy", name: "Cassandra Goth", password: "1234" },
+  { id: "xander", name: "Alexander Goth", password: "1234"}
 ];
 
 const usersSlice = createSlice({
   name: "users",
   initialState,
-  reducers: {}
+  reducers: {
+    userCreated: {
+      reducer(state, action) {
+        state.push(action.payload);
+      }
+    },
+  }
 });
 
 export default usersSlice.reducer;

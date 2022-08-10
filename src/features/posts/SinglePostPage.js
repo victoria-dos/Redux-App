@@ -30,7 +30,7 @@ export const SinglePostPage = ({ match }) => {
 
   if (!post) {
     return (
-      <Page>
+      <Page header={<PageHeader />}>
         <PageSection variant={PageSectionVariants.dark} isWidthLimited isCenterAligned>
         <SectionTitle title="Post not found!"/>
       </PageSection>
