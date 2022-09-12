@@ -24,7 +24,7 @@ const componentMapper = {
 export const EditPost = ({ match }) => {
   const { postId } = match.params;
   const post = useSelector((state) =>
-    state.posts.find((post) => post.id === postId)
+    state.posts.data.find((post) => post.id === postId)
   );
   const dispatch = useDispatch();
   const history = useHistory();

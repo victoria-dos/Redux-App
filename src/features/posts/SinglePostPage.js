@@ -22,9 +22,9 @@ export const SinglePostPage = ({ match }) => {
   const { postId } = match.params;
 
   const post = useSelector((state) =>
-    state.posts.find((post) => post.id === postId)
+    state.posts.data.find((post) => post.id === postId)
   );
-  const postIndex = useSelector((state) => state.posts).indexOf(post)
+  const postIndex = useSelector((state) => state.posts.data).indexOf(post)
   
   const history = useHistory();
 
